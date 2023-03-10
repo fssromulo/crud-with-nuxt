@@ -1,8 +1,10 @@
 <template>
-  <Welcome v-if="!isLoading" />
-  <h1 v-else>
-    Wait while we started the application...
-  </h1>
+  <b-container fluid>
+    <Welcome v-if="!isLoading" />
+    <h1 v-else>
+      Wait while we started the application...
+    </h1>
+  </b-container>
 </template>
 
 <script>

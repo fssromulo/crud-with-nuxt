@@ -11,7 +11,8 @@ export default function getAxios() {
 }
 
 export async function getToken() {
-	const responseToken = await axios.post("https://sys-dev.searchandstay.com/api/admin/login_json", {
+	localStorage.removeItem("accessToken");
+	const responseToken = await axios.post(baseURL + "login_json", {
 		login: {
 			email: "task@searchandstay.com",
 			password: "ph37i45K",

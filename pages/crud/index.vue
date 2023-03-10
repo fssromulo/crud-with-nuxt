@@ -26,8 +26,10 @@
                     </b-button>
                 </nuxt-link>
 
-                <b-button size="sm" variant="danger"> <b-icon icon="trash-fill" aria-label="Delete"></b-icon>
-                    Delete</b-button>
+                <b-button size="sm" variant="danger" @click="showMsgBoxOne(row.item.id)">
+                    <b-icon icon="trash-fill" aria-label="Delete"></b-icon>
+                    Delete
+                </b-button>
             </template>
 
             <template #table-busy>
@@ -60,7 +62,39 @@ export default {
             const responseToken = await getAxios().get("/house_rules");
             this.items = responseToken.data.data.entities;
             this.isLoading = false;
-        }
+        },
+
+        async deleteData() {
+            try {
+                this.isLoading = true;
+                const idToDelete = localStorage.getItem('idToDelete');
+                const responseToken = await getAxios().delete(`/houfse_rules/${idToDelete}`);
+
+                if (responseToken.status >= 400 && responseToken.status < 600) {
+                    throw Error('An error has been occurred on delete a data.');
+                }
+
+                localStorage.removeItem('idToDelete');
+                this.isLoading = false;
+            } catch (err) {
+                console.error(err);
+                localStorage.removeItem('idToDelete');
+                this.isLoading = false;
+            }
+
+        },
+
+        async showMsgBoxOne(id) {
+            localStorage.setItem('idToDelete', id);
+            this.boxOne = ''
+            const value = await this.$bvModal.msgBoxConfirm('Do you really wanna to remove this data?');
+            if (value) {
+                await this.deleteData();
+                this.boxOne = value;
+                await this.loadData();
+            }
+
+        },
     },
     async mounted() {
         await this.loadData();

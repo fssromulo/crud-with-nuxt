@@ -1,9 +1,16 @@
 <template>
   <b-container fluid>
-    <Welcome v-if="!isLoading" />
-    <h1 v-else>
-      Wait while we started the application...
-    </h1>
+    <b-overlay :show="isLoading" rounded="sm">
+      <Welcome />
+
+      <template #overlay>
+        <div class="text-center">
+          <b-icon icon="stopwatch" font-scale="3" animation="cylon"></b-icon>
+          <p id="cancel-label">Please wait...</p>
+
+        </div>
+      </template>
+    </b-overlay>
   </b-container>
 </template>
 
@@ -22,6 +29,7 @@ export default {
       await getToken();
       this.isLoading = false;
     },
+
   },
   async created() {
     await this.loadToken();

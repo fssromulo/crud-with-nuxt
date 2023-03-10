@@ -3,7 +3,13 @@
         <br />
         <BackButton />
         <br />
-        <b-card title="This is the CRUD index..." sub-title="Below you can see some user data:"></b-card>
+        <b-card title="This is the CRUD index..." sub-title="Below you can see some user data:">
+            <nuxt-link to="crud/save">
+                <b-button size="sm" variant="success"> <b-icon icon="plus" aria-label="Save"></b-icon>
+                    Create a new data here!
+                </b-button>
+            </nuxt-link>
+        </b-card>
         <br />
 
         <b-table striped hover :busy="isLoading" :items="items" :fields="fields">
@@ -13,11 +19,7 @@
                 </b>
             </template>
             <template #cell(actions)="row">
-                <nuxt-link to="crud/save">
-                    <b-button size="sm" variant="success"> <b-icon icon="save-fill" aria-label="Save"></b-icon>
-                        Save
-                    </b-button>
-                </nuxt-link>
+
 
                 <nuxt-link :to="`crud/update/${row.item.id}`">
                     <b-button size="sm" variant="warning">

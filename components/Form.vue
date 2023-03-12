@@ -3,28 +3,27 @@
 
         <br />
         <BackButton />
-
         <b-card :title="title" sub-title="Fill the fields below"></b-card>
         <br />
         <div>
-            <b-form>
+            <b-form @submit.prevent="onSubmit">
                 <b-row>
                     <b-col col sm="5">
                         <label class="sr-only" for="inline-form-input-name">Name</label>
                         <b-form-input :disabled="isLoading" v-model="user.name" id="inline-form-input-name"
-                            class="mb-2 mr-sm-2 mb-sm-0" placeholder="Name"></b-form-input>
+                            class="mb-2 mr-sm-2 mb-sm-0" placeholder="Name" required></b-form-input>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col col sm="5">
                         <b-form-checkbox :disabled="isLoading" v-model="user.active" name="check-button">
-                            Active <b>(Checked: {{ user.active }})</b>
+                            Active
                         </b-form-checkbox>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col col sm="5">
-                        <b-button :disabled="isLoading" type="button" @click="onSubmit" variant="primary">Save</b-button>
+                        <b-button :disabled="isLoading" type="submit" variant="primary">Save</b-button>
                     </b-col>
                 </b-row>
             </b-form>
@@ -45,7 +44,7 @@ export default {
     },
     data() {
         return {
-            user: {},
+            user: { name: '', active: true },
             isLoading: true,
         }
     },
@@ -66,7 +65,6 @@ export default {
                 }
 
                 const shouldUpdateIfHasValidId = !!this.userId;
-
                 if (shouldUpdateIfHasValidId) {
                     await getAxios().put(`/house_rules/${this.userId}`, { "house_rules": objBody });
                 } else {
@@ -91,7 +89,6 @@ export default {
 
     },
     async mounted() {
-        console.log('-->', this.userId);
         if (!!this.userId) {
             await this.loadUser();
         } else {

@@ -9,6 +9,10 @@
                     Create a new data here!
                 </b-button>
             </nuxt-link>
+            <b-button size="sm" variant="info" @click="loadData">
+                <b-icon icon="arrow-counterclockwise" aria-label="refresh"></b-icon>
+                Refresh
+            </b-button>
         </b-card>
         <br />
 
@@ -70,7 +74,7 @@ export default {
             try {
                 this.isLoading = true;
                 const idToDelete = localStorage.getItem('idToDelete');
-                const responseToken = await getAxios().delete(`/houfse_rules/${idToDelete}`);
+                const responseToken = await getAxios().delete(`/house_rules/${idToDelete}`);
 
                 if (responseToken.status >= 400 && responseToken.status < 600) {
                     throw Error('An error has been occurred on delete a data.');

@@ -29,7 +29,6 @@ export default {
       await getToken();
       this.isLoading = false;
     },
-
   },
   async created() {
     await this.loadToken();

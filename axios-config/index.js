@@ -11,7 +11,6 @@ export default function getAxios() {
 }
 
 export async function getToken() {
-	localStorage.removeItem("accessToken");
 	const responseToken = await axios.post(baseURL + "login_json", {
 		login: {
 			email: "task@searchandstay.com",
@@ -23,6 +22,4 @@ export async function getToken() {
 		localStorage.setItem("accessToken", responseToken.data.data.result.access_token);
 		return responseToken;
 	}
-
-	return null;
 }

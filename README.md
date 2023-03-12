@@ -1,4 +1,19 @@
-# simple-crud-with-nuxt
+# Code Challenge Rômulo - Nuxt CRUD
+
+I created a project that implements a simple CRUD routine.
+
+## Features
+
+I would like to Highlights some points of this project:
+
+-  Authetication with backend API
+-  It was code with NUXT 2.x version and Bootstrap Vue;
+-  In order to demonstrate my skills, I build the project from the scratch and made commit's on git always that a I've finished a little piece or a component.
+-  In adition, pay attencion how start with dummy data on my components and then I fill it with the real data. I did that to ensure I was build the components with the correct behavior before add all the business rules into.
+
+## Autor
+
+-  [@fssromulo](https://github.com/fssromulo)
 
 ## Build Setup
 
@@ -41,7 +56,6 @@ Layouts are a great help when you want to change the look and feel of your Nuxt 
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
 
-
 ### `pages`
 
 This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
@@ -67,3 +81,4 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+

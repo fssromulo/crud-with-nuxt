@@ -2,7 +2,7 @@
   <div>
     <b-jumbotron header="Welcome!" lead="This is my NUXT C.R.U.D">
       <p>Check the code of this project on my github profile...</p>
-      <b-button variant="primary" target="_blank" href="https://github.com/fssromulo/">
+      <b-button variant="primary" target="_blank" href="https://github.com/fssromulo/crud-with-nuxt">
         <b-icon icon="github" aria-label="refresh"></b-icon> See this on github</b-button>
       OR
       <nuxt-link to="/crud">
